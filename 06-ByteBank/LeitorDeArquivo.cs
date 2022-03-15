@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _06_ByteBank
 {
-    internal class LeitorDeArquivo
+    internal class LeitorDeArquivo : IDisposable
     {
 
 
@@ -15,8 +15,8 @@ namespace _06_ByteBank
         
         public LeitorDeArquivo(string arquivo)
         {
-            Arquivo = arquivo;
-            throw new FileNotFoundException();
+            Arquivo = arquivo;           
+            //throw new FileNotFoundException();
             Console.WriteLine("Abrindo arquivo: " + arquivo);
         }
         public string LerProximaLinha()
@@ -25,9 +25,13 @@ namespace _06_ByteBank
             throw new IOException();
             return "Linha do arquivo";
         }
-        public void Fechar()
+        ////public void Fechar()
+        //{
+        //    Console.WriteLine("Fechando arquivo.");
+        //}
+        public void Dispose()
         {
-            Console.WriteLine("Fechando arquivo.");
+            Console.WriteLine("Fechar arquivo");
         }
     }
 }
